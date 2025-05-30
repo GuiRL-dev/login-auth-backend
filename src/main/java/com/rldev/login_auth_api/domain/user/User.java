@@ -1,4 +1,4 @@
-﻿package com.rldev.login_auth_api.domain.user;
+package com.rldev.login_auth_api.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

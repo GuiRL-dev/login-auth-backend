@@ -1,4 +1,4 @@
-﻿package com.rldev.login_auth_api.infra.security;
+package com.rldev.login_auth_api.infra.security;
 
 
 import com.auth0.jwt.JWT;

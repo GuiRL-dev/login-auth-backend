@@ -1,4 +1,4 @@
-﻿package com.rldev.login_auth_api.repositories;
+package com.rldev.login_auth_api.repositories;
 
 import com.rldev.login_auth_api.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
