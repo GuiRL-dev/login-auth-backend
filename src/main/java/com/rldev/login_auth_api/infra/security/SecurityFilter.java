@@ -1,6 +1,6 @@
 package com.rldev.login_auth_api.infra.security;
 
-import com.rldev.login_auth_api.domain.user.User;
+import com.rldev.login_auth_api.domain.user.UserEntity;
 import com.rldev.login_auth_api.repositories.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -29,9 +29,9 @@ public class SecurityFilter extends OncePerRequestFilter {
         var login = tokenService.validateToken(token);
 
         if(login != null){
-            User user = userRepository.findByEmail(login).orElseThrow(() -> new RuntimeException("User Not Found"));
+            UserEntity userEntity = userRepository.findByEmail(login).orElseThrow(() -> new RuntimeException("User Not Found"));
             var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
-            var authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
+            var authentication = new UsernamePasswordAuthenticationToken(userEntity, null, authorities);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         filterChain.doFilter(request, response);

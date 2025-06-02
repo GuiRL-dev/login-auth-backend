@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;

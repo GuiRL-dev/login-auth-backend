@@ -5,7 +5,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.rldev.login_auth_api.domain.user.User;
+import com.rldev.login_auth_api.domain.user.UserEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +18,13 @@ public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;
 
-    public String generateToken(User user) {
+    public String generateToken(UserEntity userEntity) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
 
             String token = JWT.create()
                     .withIssuer("login-auth-api")
-                    .withSubject(user.getEmail())
+                    .withSubject(userEntity.getEmail())
                     .withExpiresAt(this.generateExpirationDate())
                     .sign(algorithm);
             return token;
